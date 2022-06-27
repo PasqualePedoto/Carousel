@@ -17,38 +17,23 @@ img {
     height: 100%;
 }
 
-#carousel figure {
-    position: relative;
-}
+/* STILIZZIAMO LE FRECCETTE */
 
-#right-scroll,
-#left-scroll {
+#carousel .fa-chevron-left {
     position: absolute;
-    top: 0;
-    bottom: 0;
-
-    width: 50px;
-
-    background-color: #dedede;
-    filter: opacity(0.5);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#right-scroll {
-    right: 0;
-}
-
-#left-scroll {
-    left: 0;
-}
-
-.fa-chevron-left,
-.fa-chevron-right {
+    top: 50%;
+    transform: translate(-50%);
+    right: 103%;
     cursor: pointer;
-    color: white;
+    color: black;
+}
+
+#carousel .fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+    left: 103%;
+    cursor: pointer;
 }
 
 .fa-chevron-left:hover,

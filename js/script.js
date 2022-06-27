@@ -57,60 +57,53 @@
 //  Costruiamo un vettore di immagini per poi distribuirle in pagina servendoci di un ciclo for
 
 
-// * 1) Bersagliamo il tag che dovrà contenere le immagini
-const wallpaper = document.getElementById('wall-paper');
+// * 1) Bersagliamo i tag che dovranno contenere le immagini
+const carousel = document.getElementById('carousel');
+const gallery = document.getElementById('gallery');
 
 //  * 2) Costruiamo il vettore di immagini
 const imgVector = ['img/01.jpg', 'img/02.jpg', 'img/03.jpg', 'img/04.jpg', 'img/05.jpg'];
 
+// * 3) Realizziamo un ciclo for in modo tale da riempire la gallery
 for (let i = 0; i < imgVector.length; i++) {
-    // Creiamo un tag figure per ogni immagine e le assegnamo la classe BootStrap height 100 %
-    const figure = document.createElement('figure');
-    figure.classList.add('h-100');
-    figure.id = `figure-${i}`;
-
-    // Creiamo un tag img da 'appendere' al figure e le assegnamo l'src e il display none
-    const img = document.createElement('img');
-    img.src = imgVector[i];
-    figure.appendChild(img);
-
-    // Creiamo un tag div da 'appendere' al figure che contenga tutto ciò che implementi il carousel
-    // $ FRECCETTA DI SINISTRA
-    const leftArrow = document.createElement('div');
-    leftArrow.id = 'left-scroll';
-
-    const faLeftArrow = document.createElement('i');
-    faLeftArrow.classList.add('fa-2x', 'fa-solid', 'fa-chevron-left');
-
-    // $ FRECCETTA DI DESTRA
-    const rightArrow = document.createElement('div');
-    rightArrow.id = 'right-scroll';
-
-    const faRightArrow = document.createElement('i');
-    faRightArrow.classList.add('fa-2x', 'fa-solid', 'fa-chevron-right');
-
-    if (i !== 0) {
-        figure.classList.add('d-none');
-        rightArrow.classList.add('d-none');
-        leftArrow.classList.add('d-none');
-        img.classList.add('d-none');
-    }
-
-    // $ APPEND DELLE FRECCETTE
-    leftArrow.appendChild(faLeftArrow);
-    rightArrow.appendChild(faRightArrow);
-
-    // $ APPENDIAMO I DIV CHE MODELLANO LE FRECCETTE NEL FIGURE
-    figure.appendChild(leftArrow);
-    figure.appendChild(rightArrow);
-
-    // $ Infine 'appendiamo' il figure alla classe wall - paper
-    wallpaper.appendChild(figure);
+    const element = document.createElement('img');
+    element.src = imgVector[i];
+    element.classList.add('d-none')
+    gallery.appendChild(element);
 }
 
-// # MODELLIAMO LA LOGICA DEL CAROUSEL
+// * 4) Bersagliamo i bottoni realizzati mediante le freccette
 
+const rightBtn = document.querySelector('.fa-chevron-right');
+const leftBtn = document.querySelector('.fa-chevron-left');
 
+// * 5) Implemento il comportamento dei bottoni 
 
+const allImages = document.querySelectorAll('#carousel img');
+let currentIndex = 0;
+allImages[currentIndex].classList.remove('d-none');
+allImages[currentIndex].classList.add('d-block');
+
+rightBtn.addEventListener('click', function () {
+    if (currentIndex < imgVector.length - 1) {
+        allImages[currentIndex].classList.remove('d-block');
+        allImages[currentIndex].classList.add('d-none');
+
+        currentIndex++;
+        allImages[currentIndex].classList.remove('d-none');
+        allImages[currentIndex].classList.add('d-block');
+    } else return;
+})
+
+leftBtn.addEventListener('click', function () {
+    if (currentIndex > 0) {
+        allImages[currentIndex].classList.remove('d-block');
+        allImages[currentIndex].classList.add('d-none');
+
+        currentIndex--;
+        allImages[currentIndex].classList.remove('d-none');
+        allImages[currentIndex].classList.add('d-block');
+    } else return;
+})
 
 
