@@ -92,7 +92,15 @@ rightBtn.addEventListener('click', function () {
         currentIndex++;
         allImages[currentIndex].classList.remove('d-none');
         allImages[currentIndex].classList.add('d-block');
-    } else return;
+    } else {
+        allImages[currentIndex].classList.remove('d-block');
+        allImages[currentIndex].classList.add('d-none');
+
+        currentIndex = 0;
+
+        allImages[currentIndex].classList.remove('d-none');
+        allImages[currentIndex].classList.add('d-block');
+    }
 })
 
 leftBtn.addEventListener('click', function () {
@@ -103,7 +111,15 @@ leftBtn.addEventListener('click', function () {
         currentIndex--;
         allImages[currentIndex].classList.remove('d-none');
         allImages[currentIndex].classList.add('d-block');
-    } else return;
+    } else {
+        allImages[currentIndex].classList.remove('d-block');
+        allImages[currentIndex].classList.add('d-none');
+
+        currentIndex = 4;
+
+        allImages[currentIndex].classList.remove('d-none');
+        allImages[currentIndex].classList.add('d-block');
+    }
 })
 
 
