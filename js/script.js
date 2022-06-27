@@ -67,13 +67,50 @@ for (let i = 0; i < imgVector.length; i++) {
     // Creiamo un tag figure per ogni immagine e le assegnamo la classe BootStrap height 100 %
     const figure = document.createElement('figure');
     figure.classList.add('h-100');
+    figure.id = `figure-${i}`;
 
     // Creiamo un tag img da 'appendere' al figure e le assegnamo l'src e il display none
     const img = document.createElement('img');
-    img.classList.add('d-none');
     img.src = imgVector[i];
     figure.appendChild(img);
 
-    // Infine 'appendiamo' il figure alla classe wall - paper
+    // Creiamo un tag div da 'appendere' al figure che contenga tutto ciò che implementi il carousel
+    // $ FRECCETTA DI SINISTRA
+    const leftArrow = document.createElement('div');
+    leftArrow.id = 'left-scroll';
+
+    const faLeftArrow = document.createElement('i');
+    faLeftArrow.classList.add('fa-2x', 'fa-solid', 'fa-chevron-left');
+
+    // $ FRECCETTA DI DESTRA
+    const rightArrow = document.createElement('div');
+    rightArrow.id = 'right-scroll';
+
+    const faRightArrow = document.createElement('i');
+    faRightArrow.classList.add('fa-2x', 'fa-solid', 'fa-chevron-right');
+
+    if (i !== 0) {
+        figure.classList.add('d-none');
+        rightArrow.classList.add('d-none');
+        leftArrow.classList.add('d-none');
+        img.classList.add('d-none');
+    }
+
+    // $ APPEND DELLE FRECCETTE
+    leftArrow.appendChild(faLeftArrow);
+    rightArrow.appendChild(faRightArrow);
+
+    // $ APPENDIAMO I DIV CHE MODELLANO LE FRECCETTE NEL FIGURE
+    figure.appendChild(leftArrow);
+    figure.appendChild(rightArrow);
+
+    // $ Infine 'appendiamo' il figure alla classe wall - paper
     wallpaper.appendChild(figure);
 }
+
+// # MODELLIAMO LA LOGICA DEL CAROUSEL
+
+
+
+
+
