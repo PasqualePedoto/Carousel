@@ -29,10 +29,20 @@
  semplice bordo.
 
  todo Prima di partire a scrivere codice:
- Non lasciamoci spaventare dalla complessità apparente dell'esercizio, ma analizziamo prima, come abbiamo fatto sempre, cosa ci potrebbe aspettare. Abbiamo completato ormai da qualche settimana la sessione HTML e CSS, se non ci ricordiamo qualcosa andiamo pure a riguardare alcuni argomenti. Non dedichiamo però al ripasso più di una mezz'ora, così da non perdere di vista il focus dell'esercizio.
- Consigli del giorno:
- 1. Costruiamo del carosello una versione statica contenente un'immagine grande con del testo ben posizionato e una miniatura. Di questa versione statica al momento opportuno commenteremo (oscureremo) alcuni elementi per poterli riprodurre dinamicamente in js. Potremo quindi usarli come "template".
+ Non lasciamoci spaventare dalla complessità apparente dell'esercizio, ma analizziamo prima, 
+ come abbiamo fatto sempre, cosa ci potrebbe aspettare. Abbiamo completato ormai da qualche 
+ settimana la sessione HTML e CSS, se non ci ricordiamo qualcosa andiamo pure a riguardare
+ alcuni argomenti. Non dedichiamo però al ripasso più di una mezz'ora, così da non perdere 
+ di vista il focus dell'esercizio.
+
+ * Consigli del giorno:
+ 1. Costruiamo del carosello una versione statica contenente un'immagine grande con del testo
+  ben posizionato e una miniatura. Di questa versione statica al momento opportuno commenteremo 
+  (oscureremo) alcuni elementi per poterli riprodurre dinamicamente in js. Potremo quindi usarli 
+  come "template".
+
  2. Scriviamo sempre prima per punti il nostro algoritmo in italiano per capire cosa vogliamo fare
+ 
  3. Al momento giusto (starà a voi capire quale) rispondete a questa domanda: "Quanti cicli servono?"
  Buon lavoro e buon divertimento! 
 
