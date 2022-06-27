@@ -42,8 +42,38 @@
   come "template".
 
  2. Scriviamo sempre prima per punti il nostro algoritmo in italiano per capire cosa vogliamo fare
- 
+
  3. Al momento giusto (starà a voi capire quale) rispondete a questa domanda: "Quanti cicli servono?"
  Buon lavoro e buon divertimento! 
 
  */
+
+// $ MILESTONE 1
+
+//Svolto in HTML
+
+// $ MILESTONE 2
+
+//  Costruiamo un vettore di immagini per poi distribuirle in pagina servendoci di un ciclo for
+
+
+// * 1) Bersagliamo il tag che dovrà contenere le immagini
+const wallpaper = document.getElementById('wall-paper');
+
+//  * 2) Costruiamo il vettore di immagini
+const imgVector = ['img/01.jpg', 'img/02.jpg', 'img/03.jpg', 'img/04.jpg', 'img/05.jpg'];
+
+for (let i = 0; i < imgVector.length; i++) {
+    // Creiamo un tag figure per ogni immagine e le assegnamo la classe BootStrap height 100 %
+    const figure = document.createElement('figure');
+    figure.classList.add('h-100');
+
+    // Creiamo un tag img da 'appendere' al figure e le assegnamo l'src e il display none
+    const img = document.createElement('img');
+    img.classList.add('d-none');
+    img.src = imgVector[i];
+    figure.appendChild(img);
+
+    // Infine 'appendiamo' il figure alla classe wall - paper
+    wallpaper.appendChild(figure);
+}
