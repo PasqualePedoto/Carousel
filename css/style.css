@@ -3,8 +3,6 @@
 #carousel {
     width: 1000px;
     height: 500px;
-
-    border: 2px solid red;
 }
 
 /* 
@@ -15,6 +13,8 @@ il figure
 img {
     width: 100%;
     height: 100%;
+
+    object-fit: cover;
 }
 
 /* STILIZZIAMO LE FRECCETTE */
@@ -39,4 +39,19 @@ img {
 .fa-chevron-left:hover,
 .fa-chevron-right:hover {
     color: dodgerblue;
+}
+
+/* STILIZZIAMO IL THUMBNAILS */
+
+#thumbnails {
+    width: 1000px;
+    height: 200px;
+}
+
+#thumbnails figure {
+    width: calc(100% / 5 - 10px);
+}
+
+._filter {
+    filter: grayscale(1);
 }

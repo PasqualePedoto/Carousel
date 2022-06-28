@@ -122,9 +122,12 @@
 //     }
 // })
 
-// # Bersagliamo il div con id = gallery così da riempirlo con le nostre immagini
+// # Bersagliamo il div con id = gallery così da riempirlo con le nostre 
+// # immagini e poi bersagliamo il thumbnails cosi da realizzare
+// $ BONUS 2
 
 const gallery = document.getElementById('gallery');
+const thumbs = document.getElementById('thumbnails')  // $ BONUS 2
 
 // # Creiamo un vettore composto dagli src delle immagini di cui vogliamo comporre il carosello
 
@@ -134,25 +137,38 @@ const imgVector = ['img/01.jpg', 'img/02.jpg', 'img/03.jpg', 'img/04.jpg', 'img/
 // # per creare le figure e agganciarle alla gallery
 
 for (let i = 0; i < imgVector.length; i++) {
-    // $ Elemento figure
+    // $ Elemento figure per il gallery e il thumbnails
     const figureElement = document.createElement('figure');
+    const figureElementThumb = document.createElement('figure');
+
     figureElement.classList.add('h-100', 'd-none');
+    figureElementThumb.classList.add('h-100', 'd-none', 'm-0', 'pt-3', '_filter');
 
     // $ Elemento img
     const imgElement = document.createElement('img');
-    imgElement.src = imgVector[i];
+    imgElement.classList.add('rounded-2', 'h-100');
 
-    // $ Agganviamo prima l'img al figure e poi il figure alla gallery
+    const imgElementThumb = document.createElement('img');
+    imgElementThumb.classList.add('rounded-2', 'h-100');
+
+    imgElement.src = imgVector[i];
+    imgElementThumb.src = imgVector[i];
+
+    // $ Agganciamo prima l'img al figure e poi il figure alla gallery
     figureElement.appendChild(imgElement);
+    figureElementThumb.appendChild(imgElementThumb);
+
     gallery.appendChild(figureElement);
+    thumbs.appendChild(figureElementThumb); // $ BONUS 2
 
 }
 
 // # Realizziamo il Bonus 1 costruendo un carosello a scorrimento infinito
 
 // $ Servendoci del metodo 'querySelectorAll' creiamo un vettore composto da tutti 
-// $ i tag che corrispondo al quel selettore
-const imgVectorHTML = document.querySelectorAll('#carousel figure');
+// $ i tag che corrispondo al quel selettore sia nella gallery che nel thumbnails
+const imgVectorHTML = document.querySelectorAll('#carousel #gallery figure');
+const imgVectorThumbHTML = document.querySelectorAll('#thumbnails figure');
 
 // $ Bersagliamo i bottoni
 const rightBtn = document.querySelector('.fa-chevron-right');
@@ -161,9 +177,17 @@ const leftBtn = document.querySelector('.fa-chevron-left');
 // $ Contatore per scorrere il vettore
 let currentIndex = 0;
 
-// $ Settiamo l'img active
+// $ Settiamo l'img active sia nella gallery che nel thumbnails
 imgVectorHTML[currentIndex].classList.remove('d-none');
 imgVectorHTML[currentIndex].classList.add('d-block');
+
+
+for (let i = 0; i < imgVectorThumbHTML.length; i++) {
+    imgVectorThumbHTML[i].classList.remove('d-none');
+    imgVectorThumbHTML[i].classList.add('d-block');
+
+    if (i === 0) imgVectorThumbHTML[i].classList.remove('_filter');
+}
 
 // $ Modelliamo il comportamento del bottone di destra
 
@@ -171,18 +195,23 @@ rightBtn.addEventListener('click', function () {
     if (currentIndex < imgVector.length - 1) {
         imgVectorHTML[currentIndex].classList.remove('d-block');
         imgVectorHTML[currentIndex].classList.add('d-none');
+        imgVectorThumbHTML[currentIndex].classList.add('_filter');
 
         currentIndex++;
 
         imgVectorHTML[currentIndex].classList.remove('d-none');
         imgVectorHTML[currentIndex].classList.add('d-block');
+        imgVectorThumbHTML[currentIndex].classList.remove('_filter');
     } else {
         imgVectorHTML[currentIndex].classList.remove('d-block');
         imgVectorHTML[currentIndex].classList.add('d-none');
+        imgVectorThumbHTML[currentIndex].classList.add('_filter');
 
         currentIndex = 0;
+
         imgVectorHTML[currentIndex].classList.remove('d-none');
         imgVectorHTML[currentIndex].classList.add('d-block');
+        imgVectorThumbHTML[currentIndex].classList.remove('_filter');
     }
 })
 
@@ -192,18 +221,22 @@ leftBtn.addEventListener('click', function () {
     if (currentIndex > 0) {
         imgVectorHTML[currentIndex].classList.remove('d-block');
         imgVectorHTML[currentIndex].classList.add('d-none');
+        imgVectorThumbHTML[currentIndex].classList.add('_filter');
 
         currentIndex--;
 
         imgVectorHTML[currentIndex].classList.remove('d-none');
         imgVectorHTML[currentIndex].classList.add('d-block');
+        imgVectorThumbHTML[currentIndex].classList.remove('_filter');
     } else {
         imgVectorHTML[currentIndex].classList.remove('d-block');
         imgVectorHTML[currentIndex].classList.add('d-none');
+        imgVectorThumbHTML[currentIndex].classList.add('_filter');
 
         currentIndex = imgVectorHTML.length;
 
         imgVectorHTML[currentIndex].classList.remove('d-none');
         imgVectorHTML[currentIndex].classList.add('d-block');
+        imgVectorThumbHTML[currentIndex].classList.remove('_filter');
     }
 })
